@@ -80,6 +80,7 @@ func Astar(graph Graph, start, end string) ([]string, error) {
 		current := findLowestF(openSet, g, end, &graph)
 
 		if current == end {
+			fmt.Println(openSet, closedSet, g, parent)
 			return buildPath(parent, end), nil
 		}
 
@@ -137,6 +138,7 @@ func buildPath(parent map[string]string, current string) []string {
 	for current != "" {
 		path = append([]string{current}, path...)
 		current = parent[current]
+		fmt.Println(current)
 	}
 	return path
 }
